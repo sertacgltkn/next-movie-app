@@ -1,19 +1,18 @@
 import React from "react";
+import CategoriesLoading  from "@/components/categories/loading";
+import FeaturedMovieLoading from "@/components/featured-movie/loading";
+import MoviesSectionLoading from "@/components/movies-section/loading";
 
-import { FeatureMovieLoading } from "@/components/featured-movie";
-import { CategoriesLoading } from "@/components/categories";
-import { MoviesSectionLoading } from "@/components/movies-section";
-
-function HomeLoading() {
+function Loading() {
   return (
     <>
-      <FeatureMovieLoading />
+      <FeaturedMovieLoading/>
       <CategoriesLoading />
-      <MoviesSectionLoading />
-      <MoviesSectionLoading />
-      <MoviesSectionLoading />
+      <MoviesSectionLoading/>
+      <MoviesSectionLoading/>
+      <MoviesSectionLoading/>
     </>
   );
 }
 
-export default HomeLoading;
+export default Loading;
