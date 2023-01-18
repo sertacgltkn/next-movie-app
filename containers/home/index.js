@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FeaturedMovie } from "@/components/featured-movie";
 import { Categories } from "@/components/categories";
 import { MoviesSection } from "@/components/movies-section";
