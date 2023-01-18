@@ -1,29 +1,38 @@
-import React from 'react'
-import HomeContainer from '@/containers/home'
-import Movies from '@/mocks/movies.json'
+import React from "react";
+import { HomeContainer } from "@/containers/home";
 
-const API_URL = 'https://api.themoviedb.org/3/'
+import {
+  fetchPopularMovies,
+  fetchTopRatedMovies,
+  fetchGenres,
+  fetchMoviesByGenre,
+} from "@/services/movie";
 
-const getPopularMovies = async () {
-  const rest = await fetch(`${API_URL}/movie/popular?api_key=${process.env.API_KEY}&page=1`)
-}
+async function HomePage({ params }) {
+  const pagePromises = [
+    fetchPopularMovies(),
+    fetchTopRatedMovies(),
+    fetchGenres(),
+  ];
 
-return res.json()
-
-
-function Homepage({params}) {
-
-  let selectedCategory;
-
-   const popularMovies = await getPopularMovies().results;
-  if (params.category?.length > 0) {
-    selectedCategory = true
+  if (!!params.category?.length) {
+    pagePromises.push(fetchMoviesByGenre(params.category[0]));
   }
-    return <HomeContainer selectedCategory={{
-      id: params.category?.[0] ?? '',
-      movies : selectedCategory ? Movies.results.slice(0,7) : [],
-    }}  /> 
 
+  const [popularMovies, topRatedMovies, genres, selectedCategoryMovies] =
+    await Promise.all(pagePromises);
+
+  return (
+    <HomeContainer
+      categories={genres}
+      popularMovies={popularMovies}
+      topRatedMovies={topRatedMovies}
+      selectedCategory={{
+        id: params.category?.[0] ?? "",
+        movies: selectedCategoryMovies ?? [],
+      }}
+    />
+  );
 }
 
-export default Homepage
+export default HomePage;
