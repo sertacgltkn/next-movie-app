@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import React from "react";
 import { MovieContainer } from "@/containers/movie";
+import { fetchSingleMovie } from "@/services/movie";
 
 async function MoviePage({ params, searchParams }) {
   const movieDetail = await fetchSingleMovie(params.id);

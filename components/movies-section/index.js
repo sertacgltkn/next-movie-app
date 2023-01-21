@@ -25,4 +25,5 @@ function MoviesSection({ title, movies }) {
   );
 }
 
-export default MoviesSection;
+export { MoviesSectionLoading } from "./loading";
+export { MoviesSection };

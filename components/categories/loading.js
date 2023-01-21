@@ -14,4 +14,4 @@ function CategoriesLoading() {
   );
 }
 
-export default CategoriesLoading
+export { CategoriesLoading };

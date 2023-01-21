@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
+import styles from "./styles.module.css";
 
 function FeaturedMovie({ movie = {}, isCompact = true }) {
   const { poster_path, title, overview } = movie;
@@ -38,4 +38,5 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
   );
 }
 
-export default FeaturedMovie;
+export { FeatureMovieLoading } from "./loading";
+export { FeaturedMovie };

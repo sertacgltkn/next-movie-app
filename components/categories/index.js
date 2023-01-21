@@ -17,4 +17,5 @@ function Categories({ categories }) {
     </div>
   );
 }
-export default Categories;
+export { CategoriesLoading } from "./loading";
+export { Categories };
